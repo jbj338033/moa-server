@@ -1,5 +1,6 @@
 package com.moa.domain.notice.domain.entity
 
+import com.moa.global.common.BaseTimeEntity
 import jakarta.persistence.*
 
 @Entity
@@ -14,6 +15,6 @@ class Notice(
     @Column(name = "content", nullable = false)
     val content: String,
 
-    @Column(name = "must_read", nullable = false)
-    val mustRead: Boolean,
-)
+    @Column(name = "important", nullable = false)
+    val important: Boolean,
+): BaseTimeEntity()
