@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/moa?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+dauth:
+  client-id: 0ff5dfc83eda40da807dd1d0bf9ae7e035b5891681c64411b15e8e45b90fe5f7
+  client-secret: 086ff25b97a849d28fbd4ab1f72da90eece20d5c01364eaeb3dc2793a2a1632f
+  redirect-url: http://localhost:5173/auth/callback
