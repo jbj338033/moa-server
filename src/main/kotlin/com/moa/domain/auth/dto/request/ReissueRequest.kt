@@ -1,4 +1,5 @@
 package com.moa.domain.auth.dto.request
 
-class ReissueRequest {
-}
+data class ReissueRequest(
+    val refreshToken: String
+)
