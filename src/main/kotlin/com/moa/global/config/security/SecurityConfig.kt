@@ -23,7 +23,7 @@ class SecurityConfig {
 
         .authorizeHttpRequests { it
             .requestMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-            .requestMatchers(HttpMethod.POST, "/auth/login").anonymous()
+            .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/reissue").anonymous()
             .anyRequest().authenticated()
         }
 
