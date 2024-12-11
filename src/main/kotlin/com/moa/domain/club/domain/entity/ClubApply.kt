@@ -30,7 +30,7 @@ class ClubApply(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    var status: ClubApplyStatus = ClubApplyStatus.WAITING
+    var status: ClubApplyStatus = ClubApplyStatus.PENDING
 ): BaseTimeEntity() {
     fun cancel() {
         status = ClubApplyStatus.CANCELED

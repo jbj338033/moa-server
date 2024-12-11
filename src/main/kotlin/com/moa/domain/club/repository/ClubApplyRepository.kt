@@ -6,6 +6,7 @@ import com.moa.domain.user.domain.entity.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ClubApplyRepository: JpaRepository<ClubApply, Long> {
+    fun findAllByUser(user: User): List<ClubApply>
     fun findByClubAndUser(club: Club, user: User): ClubApply?
 
     fun existsByClubAndUser(club: Club, user: User): Boolean
