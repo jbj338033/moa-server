@@ -30,6 +30,10 @@ class ClubController(
     @PostMapping("/{clubId}/apply")
     fun applyClub(@PathVariable clubId: UUID, @RequestBody request: ClubApplyRequest) = clubService.applyClub(clubId, request)
 
+    @Operation(summary = "동아리 지원 현황 조회")
+    @GetMapping("/applies")
+    fun getApplies() = clubService.getApplies()
+
     @Operation(summary = "동아리 지원 취소")
     @PostMapping("/{clubId}/cancel")
     fun cancelApply(@PathVariable clubId: UUID) = clubService.cancelApply(clubId)

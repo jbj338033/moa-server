@@ -1,11 +1,14 @@
 package com.moa.domain.club.service
 
+import com.moa.domain.club.domain.entity.Club
 import com.moa.domain.club.domain.entity.ClubApply
 import com.moa.domain.club.dto.request.ClubApplyRequest
+import com.moa.domain.club.dto.response.ClubApplyResponse
 import com.moa.domain.club.dto.response.ClubResponse
 import com.moa.domain.club.repository.ClubApplyRepository
 import com.moa.domain.club.repository.ClubRepository
 import com.moa.global.security.holder.SecurityHolder
+import jakarta.annotation.PostConstruct
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
@@ -53,6 +56,14 @@ class ClubService(
         )
 
         clubApplyRepository.save(apply)
+    }
+
+    @Transactional(readOnly = true)
+    fun getApplies(): List<ClubApplyResponse> {
+        val user = securityHolder.user
+        val applies = clubApplyRepository.findAllByUser(user)
+
+        return applies.map { ClubApplyResponse.of(it) }
     }
 
     @Transactional
