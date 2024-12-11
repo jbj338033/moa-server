@@ -21,7 +21,8 @@ class AuthService(
 ) {
     @Transactional
     fun login(request: LoginRequest): JwtResponse {
-        val token = dauthClient.getAccessToken(request.code)
+        val code = dauthClient.getCode(request.id, request.password)
+        val token = dauthClient.getAccessToken(code)
         val info = dauthClient.getUserInfo(token.accessToken)
 
         val user = userRepository.findByDodamId(info.uniqueId)
