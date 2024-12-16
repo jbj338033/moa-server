@@ -45,9 +45,13 @@ class SecurityConfig(
             .requestMatchers(HttpMethod.GET, "/users/me").authenticated()
 
             .requestMatchers(HttpMethod.GET, "/clubs/applies").authenticated()
-            .requestMatchers(HttpMethod.GET, "/clubs").authenticated()
+            .requestMatchers(HttpMethod.GET, "/clubs").permitAll()
             .requestMatchers(HttpMethod.POST, "/clubs/:clubId/apply").authenticated()
             .requestMatchers(HttpMethod.POST, "/clubs/:clubId/cancel").authenticated()
+
+            .requestMatchers(HttpMethod.POST, "/admin/clubs").authenticated()
+
+            .requestMatchers("/notices").permitAll()
             .anyRequest().authenticated()
         }
 
