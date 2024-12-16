@@ -1,5 +1,7 @@
 package com.moa.domain.club.domain.entity
 
+import com.moa.domain.club.domain.enums.ClubMemberRole
+import com.moa.domain.user.domain.entity.User
 import jakarta.persistence.*
 import java.util.UUID
 
@@ -20,4 +22,10 @@ class Club(
 
     @OneToMany(mappedBy = "club", cascade = [CascadeType.ALL], orphanRemoval = true)
     val members: MutableList<ClubMember> = mutableListOf(),
-)
+) {
+    fun addMember(user: User, role: ClubMemberRole) {
+        val member = ClubMember(club = this, user = user, role = role)
+
+        members.add(member)
+    }
+}
